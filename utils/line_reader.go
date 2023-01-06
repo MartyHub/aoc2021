@@ -44,6 +44,16 @@ func (lr *LineReader) HasNext() bool {
 	return result
 }
 
+func (lr *LineReader) Lines() []string {
+	result := make([]string, 0)
+
+	for lr.HasNext() {
+		result = append(result, lr.Text())
+	}
+
+	return result
+}
+
 func (lr *LineReader) Text() string {
 	return lr.scanner.Text()
 }
