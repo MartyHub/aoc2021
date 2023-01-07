@@ -12,6 +12,17 @@ func Contains[T comparable](s []T, v T) bool {
 	return false
 }
 
+func CopyAndAppend[T any](s []T, v T) []T {
+	l := len(s)
+	result := make([]T, l+1)
+
+	copy(result, s)
+
+	result[l] = v
+
+	return result
+}
+
 func Mul(s []int) int {
 	result := 1
 
