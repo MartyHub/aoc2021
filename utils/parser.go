@@ -1,6 +1,10 @@
 package utils
 
-import "log"
+import (
+	"fmt"
+	"image"
+	"log"
+)
 
 type LineParser[T any] func(string) (T, error)
 
@@ -30,4 +34,11 @@ func ParseIntegerLine(s string) ([]int, error) {
 	}
 
 	return result, nil
+}
+
+func ParsePointLine(s string) (image.Point, error) {
+	result := image.Point{}
+	_, err := fmt.Sscanf(s, "%d,%d", &result.X, &result.Y)
+
+	return result, err
 }
