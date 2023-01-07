@@ -9,17 +9,7 @@ import (
 type heightmap [][]int
 
 func parseHeightmap(fileName string) heightmap {
-	return utils.ParseFile(fileName, parseLine)
-}
-
-func parseLine(s string) ([]int, error) {
-	result := make([]int, len(s))
-
-	for i, c := range s {
-		result[i] = int(c - '0')
-	}
-
-	return result, nil
+	return utils.ParseFile(fileName, utils.ParseIntegerLine)
 }
 
 func (h heightmap) maxX() int {

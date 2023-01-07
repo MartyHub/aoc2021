@@ -21,3 +21,13 @@ func ParseFile[T any](fileName string, lp LineParser[T]) []T {
 
 	return result
 }
+
+func ParseIntegerLine(s string) ([]int, error) {
+	result := make([]int, len(s))
+
+	for i, c := range s {
+		result[i] = int(c - '0')
+	}
+
+	return result, nil
+}
