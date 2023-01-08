@@ -20,7 +20,7 @@ func parse(fileName string) graph {
 
 func part1(input graph) {
 	result := 0
-	queue := []utils.Path{utils.NewPath("start")}
+	queue := []utils.Path[string]{utils.NewPath("start")}
 	visited := make(map[string]bool)
 
 	for len(queue) > 0 {
@@ -38,7 +38,7 @@ func part1(input graph) {
 			if link == end {
 				result++
 			} else if input.cave(link).big() || !path.Contains(link) {
-				queue = append(queue, path.Add(link))
+				queue = append(queue, path.Add(link, 0))
 			}
 		}
 	}
@@ -48,7 +48,7 @@ func part1(input graph) {
 
 func part2(input graph) {
 	result := 0
-	queue := []utils.Path{utils.NewPath("start")}
+	queue := []utils.Path[string]{utils.NewPath("start")}
 	visited := make(map[string]bool)
 
 	for len(queue) > 0 {
@@ -68,7 +68,7 @@ func part2(input graph) {
 			} else if link != start && (input.cave(link).big() ||
 				!path.Contains(link) ||
 				input.onlySingleSmallCave(path)) {
-				queue = append(queue, path.Add(link))
+				queue = append(queue, path.Add(link, 0))
 			}
 		}
 	}

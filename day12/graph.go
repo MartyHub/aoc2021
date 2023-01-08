@@ -26,10 +26,10 @@ func (g graph) cave(name string) cave {
 	return result
 }
 
-func (g graph) onlySingleSmallCave(p utils.Path) bool {
+func (g graph) onlySingleSmallCave(p utils.Path[string]) bool {
 	count := make(map[string]int)
 
-	for _, name := range p {
+	for _, name := range p.Steps {
 		if !g.cave(name).big() && count[name] == 1 {
 			return false
 		}

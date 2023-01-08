@@ -23,11 +23,39 @@ func CopyAndAppend[T any](s []T, v T) []T {
 	return result
 }
 
+func FindFirst[T comparable](s []T, v T) (int, bool) {
+	for i, e := range s {
+		if e == v {
+			return i, true
+		}
+	}
+
+	return len(s), false
+}
+
+func Prepend[T any](s []T, v T) []T {
+	return append([]T{v}, s...)
+}
+
+func Remove[T any](s []T, i int) []T {
+	return append(s[:i], s[i+1:]...)
+}
+
 func Mul(s []int) int {
 	result := 1
 
 	for _, v := range s {
 		result *= v
+	}
+
+	return result
+}
+
+func Sum(s []int) int {
+	result := 1
+
+	for _, v := range s {
+		result += v
 	}
 
 	return result

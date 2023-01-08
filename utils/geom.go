@@ -11,6 +11,26 @@ func CardinalNeighbors(x, y int) []image.Point {
 	}
 }
 
+func ValidCardinalNeighbors(x, y int, width, height int) []image.Point {
+	result := make([]image.Point, 0, 8)
+
+	for dx := -1; dx <= 1; dx++ {
+		for dy := -1; dy <= 1; dy++ {
+			if Abs(dx) == Abs(dy) {
+				continue
+			}
+
+			if x+dx < 0 || y+dy < 0 || x+dx >= width || y+dy >= height {
+				continue
+			}
+
+			result = append(result, image.Point{X: x + dx, Y: y + dy})
+		}
+	}
+
+	return result
+}
+
 func ValidNeighbors(x, y int, width, height int) []image.Point {
 	result := make([]image.Point, 0, 8)
 
