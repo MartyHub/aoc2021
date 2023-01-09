@@ -52,7 +52,7 @@ func Mul(s []int) int {
 }
 
 func Sum(s []int) int {
-	result := 1
+	result := 0
 
 	for _, v := range s {
 		result += v
